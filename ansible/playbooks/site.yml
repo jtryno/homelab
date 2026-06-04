@@ -4,6 +4,7 @@
   become: true
   vars_files:
     - ~/homelab/ansible/group_vars/all.yml
+    - ~/homelab/ansible/group_vars/secrets.yml
 
   tasks:
     - name: Update apt cache
