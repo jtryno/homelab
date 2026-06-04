@@ -22,6 +22,7 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 |------|----|----|------|
 | ubuntu-server | 192.168.1.x | Ubuntu Server 24.04 | Ansible control node, Docker host |
 | homelab-02 | 192.168.1.x | Ubuntu Server 24.04 | General purpose |
+| ollama-gpu | 192.168.1.x | Ubuntu Server 24.04 | Ollama GPU inference (RX 6600 XT) |
 
 ## Repository Structure
 ```
