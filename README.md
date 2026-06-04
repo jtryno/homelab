@@ -12,8 +12,9 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Tool | Purpose |
 |------|---------|
 | Proxmox VE | Type-1 hypervisor, VM management |
-| Ubuntu Server 24.04 | Primary VM, control node |
+| Ubuntu Server 24.04 | Primary VM, Ansible control node |
 | Ansible | Configuration management and automation |
+| Ansible Vault | Encrypted secrets management |
 | Docker | Containerized services |
 
 ## Repository Structure
@@ -27,5 +28,6 @@ homelab/
 ## Goals
 - Automate all server configuration with Ansible
 - Deploy and manage services via Docker Compose
+- Expand inventory with additional Proxmox VMs
 - Document everything as code
 - Learn!
