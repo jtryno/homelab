@@ -17,6 +17,12 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Ansible Vault | Encrypted secrets management |
 | Docker | Containerized services |
 
+## Virtual Machines
+| Name | IP | OS | Role |
+|------|----|----|------|
+| ubuntu-server | 192.168.1.x | Ubuntu Server 24.04 | Ansible control node, Docker host |
+| homelab-02 | 192.168.1.x | Ubuntu Server 24.04 | General purpose |
+
 ## Repository Structure
 ```
 homelab/
