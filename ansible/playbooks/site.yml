@@ -1,0 +1,35 @@
+---
+- name: Base server setup
+  hosts: all
+  become: true
+  vars_files:
+    - ~/homelab/ansible/group_vars/all.yml
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    - name: Install base packages
+      apt:
+        name:
+          - curl
+          - wget
+          - git
+          - htop
+          - net-tools
+          - unzip
+        state: present
+
+    - name: Set timezone
+      timezone:
+        name: "{{ timezone }}"
+
+    - name: Remove unused packages
+      apt:
+        autoremove: yes

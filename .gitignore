@@ -1,0 +1,16 @@
+# Ansible
+*.retry
+ansible/group_vars/secrets.yml
+ansible/.vault_pass
+ansible/inventory/hosts.local.yml
+
+# SSH keys
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
