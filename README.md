@@ -17,80 +17,15 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Docker | Containerized services |
 
 ## Repository Structure
+```
 homelab/
 ├── ansible/          # Playbooks, inventory, and variables
 ├── docker/           # Docker Compose files for services
 └── proxmox/          # Notes and configuration references
+```
 
 ## Goals
 - Automate all server configuration with Ansible
 - Deploy and manage services via Docker Compose
 - Document everything as code
 - Learn!
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
--- INSERT --                                                                                                                                                        :
