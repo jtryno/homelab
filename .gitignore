@@ -8,8 +8,6 @@ ansible/inventory/hosts.local.yml
 .cache/
 .ansible/
 
-.vault_pass
-
 # SSH keys
 *.pem
 *.key
