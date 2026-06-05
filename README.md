@@ -12,7 +12,7 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Tool | Purpose |
 |------|---------|
 | Proxmox VE | Type-1 hypervisor, VM management |
-| Ubuntu Server 24.04 | Primary VM, Ansible control node |
+| Ubuntu Server 24.04 | Base OS for all VMs |
 | Ansible | Configuration management and automation |
 | Ansible Vault | Encrypted secrets management |
 | Docker | Containerized services |
@@ -25,20 +25,19 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 |------|----|----|------|
 | ubuntu-server | 192.168.1.x | Ubuntu Server 24.04 | Ansible control node, Docker host |
 | homelab-02 | 192.168.1.x | Ubuntu Server 24.04 | General purpose |
-| monitoring | 192.168.1.x | Ubuntu Server 24.04 | Prometheus, Node Exporter, Grafana |
+| monitoring-01 | 192.168.1.x | Ubuntu Server 24.04 | Prometheus, Node Exporter, Grafana |
 
 ## Repository Structure
 ```
 homelab/
 ├── ansible/          # Playbooks, inventory, and variables
-├── docker/           # Docker Compose files for services
 └── proxmox/          # Notes and configuration references
 ```
 
 ## Goals
 - Automate all server configuration with Ansible
 - Deploy and manage services via Docker Compose
-- Build a full monitoring stack with Prometheus and Grafana
+- ~~Build a full monitoring stack with Prometheus and Grafana~~ (completed)
 - Expand inventory with additional Proxmox VMs
 - Document everything as code
 - Learn!
