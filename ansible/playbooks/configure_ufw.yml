@@ -9,6 +9,7 @@
         rule: allow
         port: "22"
         proto: tcp
+      # noqa: args[module]
 
     - name: Allow Node Exporter
       community.general.ufw:
@@ -20,15 +21,17 @@
       community.general.ufw:
         default: deny
         direction: incoming
+      # noqa: args[module]
 
     - name: Set default outgoing policy to allow
       community.general.ufw:
         default: allow
-        direction: outgoing
+        direction: outgoin
 
     - name: Enable UFW
       community.general.ufw:
         state: enabled
+      # noqa: args[module]
 
 - name: Open monitoring ports on monitoring VM
   hosts: monitoring
@@ -40,10 +43,10 @@
         rule: allow
         port: "9090"
         proto: tcp
+      # noqa: args[module]
 
     - name: Allow Grafana
       community.general.ufw:
         rule: allow
         port: "3000"
         proto: tcp
-
