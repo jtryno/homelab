@@ -5,19 +5,18 @@
   vars_files:
     - ~/homelab/ansible/group_vars/all.yml
     - ~/homelab/ansible/group_vars/secrets.yml
-
   tasks:
     - name: Update apt cache
-      apt:
-        update_cache: yes
+      ansible.builtin.apt:
+        update_cache: true
         cache_valid_time: 3600
 
     - name: Upgrade all packages
-      apt:
+      ansible.builtin.apt:
         upgrade: dist
 
     - name: Install base packages
-      apt:
+      ansible.builtin.apt:
         name:
           - curl
           - wget
@@ -28,9 +27,9 @@
         state: present
 
     - name: Set timezone
-      timezone:
+      community.general.timezone:
         name: "{{ timezone }}"
 
     - name: Remove unused packages
-      apt:
-        autoremove: yes
+      ansible.builtin.apt:
+        autoremove: true

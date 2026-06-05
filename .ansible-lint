@@ -1,0 +1,12 @@
+mock_modules:
+  - community.general.ufw
+  - community.general.timezone
+
+warn_list:
+  - yaml[line-length]
+
+exclude_paths:
+  - .cache/
+
+skip_list:
+  - vars[suspicious-variable-in-vars_files]

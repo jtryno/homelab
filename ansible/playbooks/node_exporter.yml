@@ -6,6 +6,7 @@
     node_exporter_version: "1.11.1" # Newest version is 1.11.1 as of 06/05/2026
     node_exporter_user: node_exporter
     node_exporter_port: 9100
+    node_exporter_base_url: "https://github.com/prometheus/node_exporter/releases/download"
 
   tasks:
     - name: Create node_exporter system user
@@ -17,7 +18,7 @@
 
     - name: Download Node Exporter tarball
       ansible.builtin.get_url:
-        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+        url: "{{ node_exporter_base_url }}/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
         dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
         mode: "0644"
 
