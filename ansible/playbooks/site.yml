@@ -3,8 +3,8 @@
   hosts: all
   become: true
   vars_files:
-    - ~/homelab/ansible/group_vars/all.yml
-    - ~/homelab/ansible/group_vars/secrets.yml
+    - ~/homelab/ansible/group_vars/all/main.yml
+    - ~/homelab/ansible/group_vars/all/secrets.yml
   tasks:
     - name: Update apt cache
       ansible.builtin.apt:
