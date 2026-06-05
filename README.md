@@ -26,6 +26,7 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | ubuntu-server | 192.168.1.x | Ubuntu Server 24.04 | Ansible control node, Docker host |
 | homelab-02 | 192.168.1.x | Ubuntu Server 24.04 | General purpose |
 | monitoring-01 | 192.168.1.x | Ubuntu Server 24.04 | Prometheus, Node Exporter, Grafana |
+| awx-01 | 192.168.1.x | Ubuntu Server 24.04 | AWX Ansible UI (Current Work) |
 
 ## Repository Structure
 ```
