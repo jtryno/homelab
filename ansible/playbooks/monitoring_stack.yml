@@ -21,7 +21,7 @@
 
     - name: Deploy Prometheus config
       ansible.builtin.template:
-        src: "{{ playbook_dir }}/../templates/prometheus.yml.j2"
+        src: prometheus.yml.j2
         dest: /opt/monitoring/prometheus/config/prometheus.yml
         owner: root
         group: root
@@ -30,7 +30,7 @@
 
     - name: Deploy Grafana datasource provisioning
       ansible.builtin.template:
-        src: "{{ playbook_dir }}/../templates/grafana_datasource.yml.j2"
+        src: grafana_datasource.yml.j2
         dest: /opt/monitoring/grafana/provisioning/datasources/prometheus.yml
         owner: root
         group: root
@@ -39,7 +39,7 @@
 
     - name: Deploy Docker Compose file
       ansible.builtin.template:
-        src: "{{ playbook_dir }}/../templates/docker-compose.monitoring.yml.j2"
+        src: docker-compose.monitoring.yml.j2
         dest: /opt/monitoring/docker-compose.yml
         owner: root
         group: root
