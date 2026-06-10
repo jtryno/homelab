@@ -20,12 +20,21 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+          cache: "pip"
 
-      - name: Install ansible-lint and dependencies
-        run: |
-          pip install ansible-lint
-          ansible-galaxy collection install community.general
-          ansible-galaxy collection install community.docker
+      - name: Cache Ansible collections
+        uses: actions/cache@v5
+        with:
+          path: ~/.ansible/collections
+          key: collections-${{ hashFiles('ansible/collections/requirements.yml') }}
+          restore-keys: |
+            collections-
+
+      - name: Install ansible-lint
+        run: pip install ansible-lint
+
+      - name: Install Ansible collections
+        run: ansible-galaxy collection install -r ansible/collections/requirements.yml
 
       - name: Write vault password file
         env:
