@@ -1,3 +1,4 @@
+---
 - name: Deploy Prometheus and Grafana on monitoring-01
   hosts: monitoring
   become: true
@@ -7,7 +8,7 @@
 
   tasks:
     - name: Create config directories
-      file:
+      ansible.builtin.file:
         path: "{{ item }}"
         state: directory
         owner: root
@@ -19,8 +20,8 @@
         - /opt/monitoring/grafana/provisioning/datasources
 
     - name: Deploy Prometheus config
-      template:
-        src: ../templates/prometheus.yml.j2
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/prometheus.yml.j2"
         dest: /opt/monitoring/prometheus/config/prometheus.yml
         owner: root
         group: root
@@ -28,8 +29,8 @@
       notify: Restart monitoring stack
 
     - name: Deploy Grafana datasource provisioning
-      template:
-        src: ../templates/grafana_datasource.yml.j2
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/grafana_datasource.yml.j2"
         dest: /opt/monitoring/grafana/provisioning/datasources/prometheus.yml
         owner: root
         group: root
@@ -37,8 +38,8 @@
       notify: Restart monitoring stack
 
     - name: Deploy Docker Compose file
-      template:
-        src: ../templates/docker-compose.monitoring.yml.j2
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/docker-compose.monitoring.yml.j2"
         dest: /opt/monitoring/docker-compose.yml
         owner: root
         group: root
@@ -46,13 +47,13 @@
       notify: Restart monitoring stack
 
     - name: Open Prometheus port in UFW
-      ufw:
+      community.general.ufw:
         rule: allow
         port: "9090"
         proto: tcp
 
     - name: Open Grafana port in UFW
-      ufw:
+      community.general.ufw:
         rule: allow
         port: "3000"
         proto: tcp
