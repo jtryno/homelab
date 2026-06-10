@@ -20,6 +20,7 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Prometheus | Metrics collection and storage |
 | Grafana | Metrics visualization and dashboards |
 | Node Exporter | Host-level metrics exporter for Prometheus |
+| GitHub Actions | CI/CD pipeline for automated linting (Currently in Progress) |
 
 ## Virtual Machines
 | Name | IP | OS | Role |
@@ -41,6 +42,7 @@ homelab/
 - Deploy and manage services via Docker Compose
 - ~~Build a full monitoring stack with Prometheus and Grafana~~ (completed)
 - ~~Deploy a web UI for Ansible playbook management~~ (completed)
+- Set up a full CI/CD pipeline with automated linting
 - Expand inventory with additional Proxmox VMs
 - Document everything as code
 - Learn!
