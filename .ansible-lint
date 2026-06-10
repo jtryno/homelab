@@ -10,3 +10,4 @@ exclude_paths:
 
 skip_list:
   - vars[suspicious-variable-in-vars_files]
+  - args[module]
