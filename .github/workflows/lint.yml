@@ -1,0 +1,38 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ansible-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install ansible-lint and dependencies
+        run: |
+          pip install ansible-lint
+          ansible-galaxy collection install community.general
+
+      - name: Write vault password file
+        env:
+          VAULT_PASSWORD: ${{ secrets.VAULT_PASSWORD }}
+        run: echo "$VAULT_PASSWORD" > ~/.vault_pass
+
+      - name: Run ansible-lint
+        working-directory: ansible
+        env:
+          ANSIBLE_VAULT_PASSWORD_FILE: ~/.vault_pass
+        run: ansible-lint
