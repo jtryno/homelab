@@ -38,9 +38,10 @@
   become: true
 
   tasks:
-    - name: Allow Prometheus
+    - name: Allow Prometheus from Ansible controller only
       community.general.ufw:
         rule: allow
+        src: "{{ ansible_controller_ip }}"
         port: "9090"
         proto: tcp
       # noqa: args[module]
