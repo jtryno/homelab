@@ -45,4 +45,4 @@ homelab/
 - Set up a full CI/CD pipeline with automated linting
 - Expand inventory with additional Proxmox VMs
 - Document everything as code
-- Learn!
+- Learn!!
