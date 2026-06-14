@@ -1,0 +1,60 @@
+---
+- name: Create config directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - /opt/monitoring
+    - /opt/monitoring/prometheus/config
+    - /opt/monitoring/grafana/provisioning/datasources
+
+- name: Deploy Prometheus config
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /opt/monitoring/prometheus/config/prometheus.yml
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart monitoring stack
+
+- name: Deploy Grafana datasource provisioning
+  ansible.builtin.template:
+    src: grafana_datasource.yml.j2
+    dest: /opt/monitoring/grafana/provisioning/datasources/prometheus.yml
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart monitoring stack
+
+- name: Deploy Docker Compose file
+  ansible.builtin.template:
+    src: docker-compose.monitoring.yml.j2
+    dest: /opt/monitoring/docker-compose.yml
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart monitoring stack
+
+- name: Allow Prometheus from Ansible controller only
+  community.general.ufw:
+    rule: allow
+    # Hardcoded to ubuntu-server IP - variable resolution fails for ufw src parameter
+    src: "192.168.1.44"
+    port: "9090"
+    proto: tcp
+  # noqa: args[module]
+
+- name: Allow Grafana
+  community.general.ufw:
+    rule: allow
+    port: "3000"
+    proto: tcp
+
+- name: Start monitoring stack
+  community.docker.docker_compose_v2:
+    project_src: /opt/monitoring
+    state: present
+    pull: always

@@ -1,0 +1,6 @@
+---
+- name: Apply docker role to docker hosts
+  hosts: docker_hosts
+  become: true
+  roles:
+    - docker

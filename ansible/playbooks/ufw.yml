@@ -1,0 +1,6 @@
+---
+- name: Apply ufw role to all hosts
+  hosts: all_hosts
+  become: true
+  roles:
+    - ufw

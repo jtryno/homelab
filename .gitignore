@@ -1,6 +1,6 @@
 # Ansible
 *.retry
-ansible/group_vars/all/secrets.yml
+ansible/inventory/group_vars/all/secrets.yml
 ansible/.vault_pass
 ansible/inventory/hosts.local.yml
 
