@@ -20,7 +20,7 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 | Prometheus | Metrics collection and storage |
 | Grafana | Metrics visualization and dashboards |
 | Node Exporter | Host-level metrics exporter for Prometheus |
-| GitHub Actions | CI/CD pipeline for automated linting (Currently in Progress) |
+| GitHub Actions | CI/CD pipeline for automated linting |
 
 ## Virtual Machines
 | Name | IP | OS | Role |
@@ -32,9 +32,19 @@ Personal homelab built on an old PC running Proxmox VE. This repo documents the 
 ## Repository Structure
 ```
 homelab/
-├── ansible/          # Playbooks, inventory, and variables
-├── semaphore/        # Docker Compose for Semaphore UI
-└── proxmox/          # Notes and configuration references
+├── ansible/
+│   ├── roles/
+│   │   ├── common/         # Base packages, timezone, apt updates
+│   │   ├── ufw/            # Firewall rules for all hosts
+│   │   ├── node_exporter/  # Prometheus Node Exporter
+│   │   ├── docker/         # Docker Engine and Compose
+│   │   └── monitoring_stack/ # Prometheus and Grafana via Docker Compose
+│   ├── playbooks/          # Scoped playbooks and site.yml orchestrator
+│   ├── inventory/          # Hosts and group_vars
+│   ├── collections/        # Ansible Galaxy requirements
+│   └── ansible.cfg
+├── semaphore/              # Docker Compose for Semaphore UI
+└── proxmox/                # Notes and configuration references
 ```
 
 ## Goals
@@ -42,7 +52,8 @@ homelab/
 - Deploy and manage services via Docker Compose
 - ~~Build a full monitoring stack with Prometheus and Grafana~~ (completed)
 - ~~Deploy a web UI for Ansible playbook management~~ (completed)
-- Set up a full CI/CD pipeline with automated linting
+- ~~Set up a full CI/CD pipeline with automated linting~~ (completed)
+- ~~Refactor playbooks into Ansible roles~~ (completed)
 - Expand inventory with additional Proxmox VMs
 - Document everything as code
 - Learn!!
