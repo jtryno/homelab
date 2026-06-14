@@ -1,0 +1,6 @@
+---
+- name: Apply semaphore role to semaphore hosts
+  hosts: semaphore
+  become: true
+  roles:
+    - semaphore

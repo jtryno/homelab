@@ -38,7 +38,8 @@ homelab/
 │   │   ├── ufw/            # Firewall rules for all hosts
 │   │   ├── node_exporter/  # Prometheus Node Exporter
 │   │   ├── docker/         # Docker Engine and Compose
-│   │   └── monitoring_stack/ # Prometheus and Grafana via Docker Compose
+│   │   ├── monitoring_stack/ # Prometheus and Grafana via Docker Compose
+│   │   └── semaphore/        # Semaphore UI and Postgres via Docker Compose
 │   ├── playbooks/          # Scoped playbooks and site.yml orchestrator
 │   ├── inventory/          # Hosts and group_vars
 │   ├── collections/        # Ansible Galaxy requirements

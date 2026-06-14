@@ -13,3 +13,6 @@
 
 - name: Import monitoring playbook
   ansible.builtin.import_playbook: monitoring.yml
+
+- name: Import semaphore playbook
+  ansible.builtin.import_playbook: semaphore.yml

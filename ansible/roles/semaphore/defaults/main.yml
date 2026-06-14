@@ -1,0 +1,10 @@
+---
+semaphore_deploy_path: /opt/semaphore
+semaphore_port: 3001
+semaphore_db_user: semaphore
+semaphore_db_name: semaphore
+semaphore_db_host: postgres
+semaphore_db_port: 5432
+semaphore_admin_user: admin
+semaphore_admin_name: Admin
+semaphore_admin_email: admin@localhost
