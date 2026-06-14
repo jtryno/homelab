@@ -1,35 +1,15 @@
 ---
-- name: Base server setup
-  hosts: all
-  become: true
-  vars_files:
-    - ~/homelab/ansible/group_vars/all/main.yml
-    - ~/homelab/ansible/group_vars/all/secrets.yml
-  tasks:
-    - name: Update apt cache
-      ansible.builtin.apt:
-        update_cache: true
-        cache_valid_time: 3600
+- name: Import common playbook
+  ansible.builtin.import_playbook: common.yml
 
-    - name: Upgrade all packages
-      ansible.builtin.apt:
-        upgrade: dist
+- name: Import ufw playbook
+  ansible.builtin.import_playbook: ufw.yml
 
-    - name: Install base packages
-      ansible.builtin.apt:
-        name:
-          - curl
-          - wget
-          - git
-          - htop
-          - net-tools
-          - unzip
-        state: present
+- name: Import node_exporter playbook
+  ansible.builtin.import_playbook: node_exporter.yml
 
-    - name: Set timezone
-      community.general.timezone:
-        name: "{{ timezone }}"
+- name: Import docker playbook
+  ansible.builtin.import_playbook: docker.yml
 
-    - name: Remove unused packages
-      ansible.builtin.apt:
-        autoremove: true
+- name: Import monitoring playbook
+  ansible.builtin.import_playbook: monitoring.yml
