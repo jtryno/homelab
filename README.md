@@ -48,6 +48,17 @@ homelab/
 └── proxmox/                # Notes and configuration references
 ```
 
+## Notes
+
+### Semaphore configuration
+The `semaphore` role deploys the Semaphore container and its dependencies but you have to manually configure the following in the Semaphore UI after deployment:
+
+- **Key Store**: SSH key (`~/.ssh/ansible_key`) and vault password
+- **Inventory**: Static inventory using the `hosts.yml` structure
+- **Variable Group**: `timezone`, `grafana_admin_password`, `postgres_password`, `semaphore_admin_password` as extra variables; `ANSIBLE_ROLES_PATH=ansible/roles` as environment variable
+- **Repository**: GitHub repo URL and branch
+- **Task templates**: One per playbook under `ansible/playbooks/`, with vault password attached and Galaxy install skipped
+
 ## Goals
 - Automate all server configuration with Ansible
 - Deploy and manage services via Docker Compose
