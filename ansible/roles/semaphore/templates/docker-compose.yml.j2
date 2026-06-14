@@ -4,9 +4,9 @@ services:
     container_name: semaphore-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: semaphore
+      POSTGRES_USER: {{ semaphore_db_user }}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: semaphore
+      POSTGRES_DB: {{ semaphore_db_name }}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -15,18 +15,18 @@ services:
     container_name: semaphore
     restart: unless-stopped
     ports:
-      - "3001:3000"
+      - "{{ semaphore_port }}:3000"
     environment:
-      SEMAPHORE_DB_USER: semaphore
+      SEMAPHORE_DB_USER: {{ semaphore_db_user }}
       SEMAPHORE_DB_PASS: ${POSTGRES_PASSWORD}
-      SEMAPHORE_DB_HOST: postgres
-      SEMAPHORE_DB_PORT: 5432
+      SEMAPHORE_DB_HOST: {{ semaphore_db_host }}
+      SEMAPHORE_DB_PORT: {{ semaphore_db_port }}
       SEMAPHORE_DB_DIALECT: postgres
-      SEMAPHORE_DB: semaphore
-      SEMAPHORE_ADMIN: admin
+      SEMAPHORE_DB: {{ semaphore_db_name }}
+      SEMAPHORE_ADMIN: {{ semaphore_admin_user }}
       SEMAPHORE_ADMIN_PASSWORD: ${SEMAPHORE_ADMIN_PASSWORD}
-      SEMAPHORE_ADMIN_NAME: Admin
-      SEMAPHORE_ADMIN_EMAIL: admin@localhost
+      SEMAPHORE_ADMIN_NAME: {{ semaphore_admin_name }}
+      SEMAPHORE_ADMIN_EMAIL: {{ semaphore_admin_email }}
     depends_on:
       - postgres
 
