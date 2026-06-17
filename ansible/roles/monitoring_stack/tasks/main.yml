@@ -41,11 +41,9 @@
 - name: Allow Prometheus from Ansible controller only
   community.general.ufw:
     rule: allow
-    # Hardcoded to ubuntu-server IP - variable resolution fails for ufw src parameter
-    src: "192.168.1.44"
+    src: "{{ monitoring_stack_prometheus_allowed_src }}"
     port: "9090"
     proto: tcp
-  # noqa: args[module]
 
 - name: Allow Grafana
   community.general.ufw:
