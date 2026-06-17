@@ -1,0 +1,5 @@
+---
+monitoring_stack_prometheus_allowed_src: >-
+  {{ hostvars[groups['semaphore'][0]].ansible_host
+     if groups.get('semaphore')
+     else undef(hint='Set monitoring_stack_prometheus_allowed_src or add a semaphore group to the inventory') }}
