@@ -27,6 +27,7 @@ services:
       SEMAPHORE_ADMIN_PASSWORD: ${SEMAPHORE_ADMIN_PASSWORD}
       SEMAPHORE_ADMIN_NAME: {{ semaphore_admin_name }}
       SEMAPHORE_ADMIN_EMAIL: {{ semaphore_admin_email }}
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: ${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
     depends_on:
       - postgres
 
