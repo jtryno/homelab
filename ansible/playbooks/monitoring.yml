@@ -2,5 +2,7 @@
 - name: Apply monitoring_stack role to monitoring hosts
   hosts: monitoring
   become: true
+  vars_files:
+    - ../vault/alertmanager.yml
   roles:
     - monitoring_stack
